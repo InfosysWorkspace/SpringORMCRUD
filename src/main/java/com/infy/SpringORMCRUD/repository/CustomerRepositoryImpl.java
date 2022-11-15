@@ -15,6 +15,9 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     @PersistenceContext
     private EntityManager entityManager;
 
+
+    // Create Operation using JPA with Spring Boot (adding just the @Override Annotation)
+    @Override
     public CustomerDTO getCustomer(Integer customerId) {
 
         CustomerDTO customerDTO = null;
@@ -28,5 +31,20 @@ public class CustomerRepositoryImpl implements CustomerRepository{
             customerDTO.setCustomerType(customer.getCustomerType());
         }
         return customerDTO;
+    }
+
+    // Create Operation using JPA with Spring Boot
+    // add addCustomer() method to CustomerRepositoryImpl
+    @Override
+    public void addCustomer(CustomerDTO customerDTO){
+        Customer customer = new Customer();
+        customer.setCustomerId(customerDTO.getCustomerId());
+        customer.setDateOfBirth(customerDTO.getDateOfBirth());
+        customer.setEmailId(customerDTO.getEmailId());
+        customer.setName(customerDTO.getName());
+        customer.setCustomerType(customerDTO.getCustomerType());
+        // persist()
+        entityManager.persist(customer);
+
     }
 }

@@ -1,6 +1,7 @@
 package com.infy.SpringORMCRUD;
 
 import com.infy.SpringORMCRUD.dto.CustomerDTO;
+import com.infy.SpringORMCRUD.dto.CustomerType;
 import com.infy.SpringORMCRUD.exception.InfyBankException;
 import com.infy.SpringORMCRUD.service.CustomerServiceImpl;
 import org.apache.commons.logging.Log;
@@ -10,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
+
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class SpringORMCRUDApplication implements CommandLineRunner {
@@ -29,7 +32,11 @@ public class SpringORMCRUDApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		getCustomer();
+//		getCustomer();
+
+		// Create Operation using JPA with Spring Boot
+		// add addCustomer() method
+		addCustomer();
 	}
 
 	public void getCustomer() throws InfyBankException{
@@ -44,5 +51,25 @@ public class SpringORMCRUDApplication implements CommandLineRunner {
 			}
 		}
 
+	}
+
+
+	// Create Operation using JPA with Spring Boot
+	// add addCustomer() method to CustomerService interface
+	public void addCustomer(){
+		CustomerDTO customerDTO = new CustomerDTO();
+		customerDTO.setCustomerId(1);
+		customerDTO.setEmailId("buhari@infy.com");
+		customerDTO.setName("buhari");
+		customerDTO.setDateOfBirth(LocalDate.of(1985, 07, 05));
+		customerDTO.setCustomerType(CustomerType.GOLD);
+
+		try{
+			customerService.addCustomer(customerDTO);
+			LOGGER.info(environment.getProperty("UserInterface.INSERT_SUCCESS"));
+		} catch (Exception e){
+			LOGGER.info(environment.getProperty(e.getMessage(),
+					"Something went wrong. Please check log file for more details."));
+		}
 	}
 }
