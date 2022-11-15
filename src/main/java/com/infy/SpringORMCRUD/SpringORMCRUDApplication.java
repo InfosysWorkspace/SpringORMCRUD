@@ -14,13 +14,14 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 public class SpringORMCRUDApplication implements CommandLineRunner {
 
-	public static final Log LOGGER = LogFactory.getLog(SpringORMCRUDApplication.class);
-
 	@Autowired
 	CustomerServiceImpl customerService;
 
 	@Autowired
 	Environment environment;
+
+	public static final Log LOGGER = LogFactory.getLog(SpringORMCRUDApplication.class);
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringORMCRUDApplication.class, args);
