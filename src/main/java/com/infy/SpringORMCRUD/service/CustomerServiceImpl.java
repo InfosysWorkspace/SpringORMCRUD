@@ -39,4 +39,15 @@ public class CustomerServiceImpl implements CustomerService{
         }
         customerRepository.addCustomer(customerDTO);
     }
+
+    // Update Operation using JPA with Spring Boot
+    // add updateCustomer() method to CustomerService
+    @Override
+    public void updateCustomer(Integer customerId, String emailId) throws InfyBankException{
+        CustomerDTO customerDTO = customerRepository.getCustomer(customerId);
+        if (customerDTO == null){
+            throw new InfyBankException("Service.CUSTOMER_UNAVAILABLE");
+        }
+        customerRepository.updateCustomer(customerId, emailId);
+    }
 }

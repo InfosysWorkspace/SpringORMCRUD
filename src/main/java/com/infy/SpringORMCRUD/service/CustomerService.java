@@ -10,4 +10,8 @@ public interface CustomerService {
     // Create Operation using JPA with Spring Boot
     // add addCustomer() method to CustomerService interface
     public void addCustomer(CustomerDTO customerDTO) throws InfyBankException;
+
+    // Update Operation using JPA with Spring Boot
+    // add updateCustomer() method to CustomerService interface
+    public void updateCustomer(Integer customerId, String emailId) throws InfyBankException;
 }

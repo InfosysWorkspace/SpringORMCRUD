@@ -28,11 +28,15 @@ public class SpringORMCRUDApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		getCustomer();
+		//getCustomer();
 
 		// Create Operation using JPA with Spring Boot
 		// add addCustomer() method
-		addCustomer();
+		//addCustomer();
+
+		// Update Operation using JPA with Spring Boot
+		// add updateCustomer() method
+		updateCustomer();
 	}
 
 	public void getCustomer() throws InfyBankException{
@@ -66,6 +70,20 @@ public class SpringORMCRUDApplication implements CommandLineRunner {
 		} catch (Exception e){
 			LOGGER.info(environment.getProperty(e.getMessage(),
 					"Something went wrong. Please check log file for more details."));
+		}
+	}
+
+
+	// Update Operation using JPA with Spring Boot
+	// add updateCustomer() method t
+	public void updateCustomer(){
+		try {
+			customerService.updateCustomer(1, "buhari2022@infy.com");
+			LOGGER.info(environment.getProperty("UserInterface.UPDATE_SUCCESS"));
+		}catch (Exception e){
+			LOGGER.info(environment.getProperty(e.getMessage(),
+					"Something went wrong. Please check log file for more details."));
+
 		}
 	}
 }

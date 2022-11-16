@@ -47,4 +47,15 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         entityManager.persist(customer);
 
     }
+
+    // Update Operation using JPA with Spring Boot
+    // add updateCustomer() method to CustomerRepositoryImpl
+    @Override
+    public Integer updateCustomer(Integer customerId, String emailId){
+        Integer customerIdReturned = null;
+        Customer customer = entityManager.find(Customer.class, customerId);
+        customer.setEmailId(emailId);
+        customerIdReturned = customer.getCustomerId();
+        return customerIdReturned;
+    }
 }
