@@ -18,6 +18,9 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    // Create Operation using JPA with Spring Boot (Override)
+    @Override
     public CustomerDTO getCustomer(Integer customerId) throws InfyBankException{
         CustomerDTO customerDTO = customerRepository.getCustomer(customerId);
         if(customerDTO == null){

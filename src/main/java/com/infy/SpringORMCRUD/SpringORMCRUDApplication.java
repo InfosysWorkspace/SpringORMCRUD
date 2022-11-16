@@ -16,16 +16,12 @@ import java.time.LocalDate;
 
 @SpringBootApplication
 public class SpringORMCRUDApplication implements CommandLineRunner {
-
+	public static final Log LOGGER = LogFactory.getLog(SpringORMCRUDApplication.class);
 	@Autowired
 	CustomerServiceImpl customerService;
 
 	@Autowired
 	Environment environment;
-
-	public static final Log LOGGER = LogFactory.getLog(SpringORMCRUDApplication.class);
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringORMCRUDApplication.class, args);
 	}
@@ -58,11 +54,11 @@ public class SpringORMCRUDApplication implements CommandLineRunner {
 	// add addCustomer() method to CustomerService interface
 	public void addCustomer(){
 		CustomerDTO customerDTO = new CustomerDTO();
-		customerDTO.setCustomerId(1);
-		customerDTO.setEmailId("buhari@infy.com");
-		customerDTO.setName("buhari");
-		customerDTO.setDateOfBirth(LocalDate.of(1985, 07, 05));
-		customerDTO.setCustomerType(CustomerType.GOLD);
+		customerDTO.setCustomerId(4);
+		customerDTO.setEmailId("maryam@infy.com");
+		customerDTO.setName("maryam");
+		customerDTO.setDateOfBirth(LocalDate.of(1994, 07, 22));
+		customerDTO.setCustomerType(CustomerType.SILVER);
 
 		try{
 			customerService.addCustomer(customerDTO);
