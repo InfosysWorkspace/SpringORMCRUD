@@ -50,4 +50,15 @@ public class CustomerServiceImpl implements CustomerService{
         }
         customerRepository.updateCustomer(customerId, emailId);
     }
+
+    // Delete Operation using JPA with Spring Boot
+    // add deleteCustomer() method to CustomerServideImpl
+    @Override
+    public void deleteCustomer(Integer customerId) throws InfyBankException{
+        CustomerDTO customerDTO = customerRepository.getCustomer(customerId);
+        if (customerDTO == null ){
+            throw new InfyBankException("Service.CUSTOMER_UNAVAILABLE");
+        }
+        customerRepository.deleteCustomer(customerId);
+    }
 }

@@ -58,4 +58,14 @@ public class CustomerRepositoryImpl implements CustomerRepository{
         customerIdReturned = customer.getCustomerId();
         return customerIdReturned;
     }
+
+    // Delete Operation using JPA with Spring Boot
+    // add deleteCustomer() method to CustomerRepository interface
+    @Override
+    public Integer deleteCustomer(Integer customerId){
+        Customer customer = entityManager.find(Customer.class, customerId);
+        entityManager.remove(customer);
+        Integer customerIdReturned = customer.getCustomerId();
+        return customerIdReturned;
+    }
 }

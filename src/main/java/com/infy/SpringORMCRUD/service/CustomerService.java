@@ -14,4 +14,8 @@ public interface CustomerService {
     // Update Operation using JPA with Spring Boot
     // add updateCustomer() method to CustomerService interface
     public void updateCustomer(Integer customerId, String emailId) throws InfyBankException;
+
+    // Delete Operation using JPA with Spring Boot
+    // add deleteCustomer() method to CustomerService interface
+    public void deleteCustomer(Integer customerId) throws InfyBankException;
 }

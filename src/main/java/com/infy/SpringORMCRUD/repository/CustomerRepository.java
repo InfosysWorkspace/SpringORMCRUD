@@ -14,4 +14,8 @@ public interface CustomerRepository {
     // add updateCustomer() method to CustomerRepository interface
     public Integer updateCustomer(Integer customerId, String emailId);
 
+    // Delete Operation using JPA with Spring Boot
+    // add deleteCustomer() method to CustomerRepository interface
+    public Integer deleteCustomer(Integer customerId);
+
 }

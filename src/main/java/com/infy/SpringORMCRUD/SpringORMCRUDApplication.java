@@ -37,6 +37,10 @@ public class SpringORMCRUDApplication implements CommandLineRunner {
 		// Update Operation using JPA with Spring Boot
 		// add updateCustomer() method
 		updateCustomer();
+
+		// Delete Operation using JPA with Spring Boot
+		// add deleteCustomer() method
+		deleteCustomer();
 	}
 
 	public void getCustomer() throws InfyBankException{
@@ -84,6 +88,18 @@ public class SpringORMCRUDApplication implements CommandLineRunner {
 			LOGGER.info(environment.getProperty(e.getMessage(),
 					"Something went wrong. Please check log file for more details."));
 
+		}
+	}
+
+	// Delete Operation using JPA with Spring Boot
+	// add deleteCustomer() method to CustomerServideImpl
+	public void deleteCustomer(){
+		try {
+			customerService.deleteCustomer(1);
+			LOGGER.info(environment.getProperty("UserInterface.DELETE_SUCCESS"));
+		} catch (Exception e){
+			LOGGER.info(environment.getProperty(e.getMessage(),
+					"Something went wrong. Please check log file for more details."));
 		}
 	}
 }
